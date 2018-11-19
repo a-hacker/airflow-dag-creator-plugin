@@ -1,0 +1,28 @@
+{% extends "airflow/master.html" %}
+
+{% block title %}Airflow - Dag Creator{% endblock %}
+
+{% block head_css %}
+{{ super() }}
+
+{% endblock %}
+
+{% block body %}
+<h1>Airflow Dag Creator</h1>
+
+<div>
+    <form method="POST" action="/admin/dagcreator/create_dag">
+        Dag Name:
+        <input type="text" name="dag_name"><br>
+        Dag Definiion:<br>
+        <textarea name="dag_definition" rows="20"></textarea><br><br>
+        <input type="submit" value="Create Dag">
+    </form>
+</div>
+
+{% endblock %}
+
+{% block tail %}
+{{ super() }}
+
+{% endblock %}
