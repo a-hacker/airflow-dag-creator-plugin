@@ -1,17 +1,10 @@
-"""
-Licensed Materials - Property of IBM
-[PID GOES HERE]
-Copyright IBM Corp. 2009, 2016
-US Government Users Restricted Rights- Use, duplication or disclosure restricted by GSA ADP Schedule
-Contract with IBM Corp.
-"""
 import os
 
 from airflow.plugins_manager import AirflowPlugin
 from airflow import configuration
 from airflow.www.app import csrf
 
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request
 from flask_admin import BaseView, expose
 
 import logging
