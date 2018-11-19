@@ -12,6 +12,7 @@
 
 <div>
     <form method="POST" action="/admin/dagcreator/create_dag">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         Dag Name:
         <input type="text" name="dag_name"><br>
         Dag Definiion:<br>

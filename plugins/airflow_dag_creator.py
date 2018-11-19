@@ -1,16 +1,15 @@
+import logging
 import os
 
 from airflow.plugins_manager import AirflowPlugin
 from airflow import configuration
-from airflow.www.app import csrf
 
 from flask import Blueprint, request
 from flask_admin import BaseView, expose
 
-import logging
-
 
 dags_folder = configuration.get('core', 'DAGS_FOLDER')
+
 
 class DagCreator(BaseView):
     @expose('/')
@@ -20,7 +19,6 @@ class DagCreator(BaseView):
         )
 
     @expose('/create_dag', methods=["POST"])
-    @csrf.exempt
     def create_dag(self):
         dag_name: str = request.form.get('dag_name')
         if not dag_name:
@@ -43,7 +41,7 @@ class DagCreator(BaseView):
         return '', 204
 
 
-dag_cretor_view = DagCreator(category="Admin", name="Create Dag")
+dag_creator_view = DagCreator(category="Admin", name="Create Dag")
 
 
 dag_creator_bp = Blueprint(
@@ -54,11 +52,11 @@ dag_creator_bp = Blueprint(
 )
 
 
-class DAG_Creator_Plugin(AirflowPlugin):
+class DagCreatorPlugin(AirflowPlugin):
     name = "dag_creator"
     operators = []
     flask_blueprints = [dag_creator_bp]
     hooks = []
     executors = []
-    admin_views = [dag_cretor_view]
+    admin_views = [dag_creator_view]
     menu_links = []
