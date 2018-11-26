@@ -3,4 +3,7 @@ __pycache__
 
 venv
 dags
-docker-compose.yml
+
+node_modules
+npm-debug.log
+*.pack.js

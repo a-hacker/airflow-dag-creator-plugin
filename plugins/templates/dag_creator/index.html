@@ -10,16 +10,18 @@
 {% block body %}
 <h1>Airflow Dag Creator</h1>
 
-<div>
-    <form method="POST" action="/admin/dagcreator/create_dag">
+<div id="create_dag">
+    <!-- <form method="POST" action="/admin/dagcreator/create_dag">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         Dag Name:
         <input type="text" name="dag_name"><br>
         Dag Definiion:<br>
         <textarea name="dag_definition" rows="20"></textarea><br><br>
         <input type="submit" value="Create Dag">
-    </form>
+    </form> -->
 </div>
+
+<script src="{{ url_for('dag_creator_bp.static', filename='dag_creator.pack.js') }}" type="text/javascript"></script>
 
 {% endblock %}
 
